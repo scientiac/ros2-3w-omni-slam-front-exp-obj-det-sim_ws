@@ -29,3 +29,9 @@ Add the `/dropoff_zones` node to visualize the arena corner flags in the R-viz w
 
 ### Tagged Explored Corners in R-viz
 ![Tagged Explored Corners in R-viz](images/corner-explored.png)
+
+# Source, References and Acknowledgements
+
+Robot Description and SLAM source code present here is taken from [yzrobot/ros2_exploration](https://github.com/yzrobot/ros2_exploration).
+Frontier exploration is based on [YePeOn7/ros2_omni_robot_sim](https://github.com/YePeOn7/ros2_omni_robot_sim).
+Shape Recognition for circles uses [Hough Circle Transform](https://docs.opencv.org/3.4/d4/d70/tutorial_hough_circle.html)
