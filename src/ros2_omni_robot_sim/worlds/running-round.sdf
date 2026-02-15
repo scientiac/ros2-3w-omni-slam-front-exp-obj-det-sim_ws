@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="running_round">
+    
+    <!-- Sun -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Custom Ground Plane (White Floor) -->
+    <!-- Size: 4m long (x) by 2.95m wide (y) -->
+    <!-- 4 tracks * 0.70m = 2.80m -->
+    <!-- 3 lines * 0.05m = 0.15m -->
+    <!-- Total Width = 2.95m -->
+    <model name="arena_floor">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4 2.95 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 2.95 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Boundary Lines (Black Separators) -->
+    <!-- Line Dimensions: 4m (x) x 0.05m (y) -->
+    <!-- Height: 0.001 (flush appearance) -->
+    
+    <!-- Y Positions calculation (Centered at 0) -->
+    <!-- Total width 2.95. Extent from -1.475 to +1.475 -->
+    <!-- Track 1 (0.7m) -> Line 1 (0.05m) -> Track 2 (0.7m) -> Line 2 (0.05m: Center) -> Track 3 (0.7m) -> Line 3 (0.05m) -> Track 4 (0.7m) -->
+    
+    <!-- Center Line (Line 2) is at Y=0 -->
+    <!-- Line 1 is Y = -0.025 (half center) - 0.7 (track) - 0.025 (half self) = -0.75 -->
+    <!-- wait. Center of Line 2 is 0. -->
+    <!-- Edge of Line 2 is -0.025. -->
+    <!-- Track 2 spans -0.025 to -0.725 -->
+    <!-- Line 1 center is -0.725 - 0.025 = -0.75. Correct. -->
+    <!-- Line 3 center is +0.75. -->
+
+    <model name="separator_line_center">
+      <static>true</static>
+      <pose>0 0 0.0055 0 0 0</pose> <!-- On top of floor -->
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="separator_line_left">
+      <static>true</static>
+      <pose>0 0.75 0.0055 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="separator_line_leftmost">
+      <static>true</static>
+      <pose>0 1.5 0.0055 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="separator_line_right">
+      <static>true</static>
+      <pose>0 -0.75 0.0055 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="separator_line_rightmost">
+      <static>true</static>
+      <pose>0 -1.5 0.0055 0 0 0</pose>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4 0.05 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

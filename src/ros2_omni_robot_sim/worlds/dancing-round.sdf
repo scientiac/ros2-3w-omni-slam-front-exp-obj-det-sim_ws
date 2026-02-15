@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<sdf version="1.9">
+  <world name="dancing_round">
+    
+    <!-- Sun (Directional Light) -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+
+    <!-- Custom Ground Plane (White Floor) -->
+    <model name="arena_floor">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3 3 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3 3 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.8 0.8 1</ambient>
+            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Walls -->
+    <model name="arena_walls">
+      <static>true</static>
+      <pose>0 0 0.15 0 0 0</pose> <!-- Half height of wall (30cm) is 15cm -->
+      <link name="link">
+        <collision name="collision_north">
+          <pose>0 1.515 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>3.03 0.03 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual_north">
+          <pose>0 1.515 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>3.03 0.03 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="collision_south">
+          <pose>0 -1.515 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>3.03 0.03 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual_south">
+          <pose>0 -1.515 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>3.03 0.03 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="collision_east">
+          <pose>1.515 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 3.03 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual_east">
+          <pose>1.515 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 3.03 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name="collision_west">
+          <pose>-1.515 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 3.03 0.3</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual_west">
+          <pose>-1.515 0 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.03 3.03 0.3</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Center Divider Thread -->
+    <model name="divider_thread">
+      <static>true</static>
+      <pose>0 0 0.0055 0 0 0</pose> <!-- Just above floor (0.005 + 0.0005) -->
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3.0 0.005 0.001</size> <!-- 3m long, 5mm wide, 1mm high -->
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse> <!-- Black -->
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>
